@@ -80,7 +80,7 @@ int ff_url_join(char *str, int size, const char *proto,
 void ff_make_absolute_url(char *buf, int size, const char *base,
                           const char *rel)
 {
-    char *sep, *path_query;
+    char *sep, *path_query, *relative;
     /* Absolute path, relative to the current server */
     if (base && strstr(base, "://") && rel[0] == '/') {
         if (base != buf)
@@ -142,6 +142,11 @@ void ff_make_absolute_url(char *buf, int size, const char *base,
         else
             buf[0] = '\0';
         rel += 3;
+    }
+    if (av_strstart(rel, "./", NULL)) {
+      relative = strchr(rel, '.') + 1;
+      av_strlcat(buf, relative, size);
+      return;
     }
     av_strlcat(buf, rel, size);
 }
