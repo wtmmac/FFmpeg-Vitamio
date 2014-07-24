@@ -181,6 +181,7 @@ else
     --enable-version3 \
     --enable-optimizations \
     --enable-shared \
+    --disable-fast-unaligned \
     --disable-static \
     --disable-symver \
     --disable-programs \
