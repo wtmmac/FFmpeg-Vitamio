@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# tested with android-ndk-r10c-darwin-x86
 echo "  _    __   _    __                           _             "
 echo " | |  / /  (_)  / /_   ____ _   ____ ___     (_)  ___       "
 echo " | | / /  / /  / __/  / __ \/  / __ __  \   / /  / __ \     "
@@ -19,7 +19,7 @@ fi
 
 # Detect OS
 OS=`uname`
-HOST_ARCH=x86
+HOST_ARCH=x86  #modified
 export CCACHE=; type ccache >/dev/null 2>&1 && export CCACHE=ccache
 if [ $OS == 'Linux' ]; then
   export HOST_SYSTEM=linux-$HOST_ARCH
